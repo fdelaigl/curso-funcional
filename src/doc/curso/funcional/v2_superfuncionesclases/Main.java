@@ -3,7 +3,9 @@ package doc.curso.funcional.v2_superfuncionesclases;
 import java.util.ArrayList;
 import java.util.List;
 
-import doc.curso.funcional.v2_superfuncionesclases.clases.SoloImpares;
+import doc.curso.funcional.v2_superfuncionesclases.clases.AlCubo;
+import doc.curso.funcional.v2_superfuncionesclases.clases.Aleatorio;
+import doc.curso.funcional.v2_superfuncionesclases.clases.Impresor;
 import doc.curso.funcional.v2_superfuncionesclases.clases.SoloPares;
 
 public class Main {
@@ -23,28 +25,28 @@ public class Main {
 		 * 5.- Obtener la suma de cuadrados
 		 */
 		//1.- Crear lista de numeros enteros
-		List<Integer> numeros = crearLista();
+		List<Integer> numeros = Superfunciones.proveer(10, new Aleatorio());
 		System.out.println(numeros);
 		// 2.- Quedarme solo con los pares
-		List<Integer> pares =	Superfunciones.filtrar(numeros, new SoloImpares());
+		List<Integer> pares =	Superfunciones.filtrar(numeros, new SoloPares());
 		System.out.println(pares);
 		// 3.- Pasar cada numero a cuadrado
-		List<Integer> cuadrados = elevarAlCuadrado(pares);
-		System.out.println(cuadrados);
-		List<Integer> mostrados  = mostrarLista(cuadrados);
+		List<Integer> transformados = Superfunciones.transformar(pares, new AlCubo());
+		System.out.println(transformados);
+		List<Integer> mostrados  = Superfunciones.actuar(transformados, new Impresor());
 		//5.- Obtener la suma de cuadrados
-		Integer total = sumarLista(cuadrados);
+		Integer total = sumarLista(transformados);
 		System.out.println("Total de la suma de cuadrados " + total);
 	}
 
 
 
 
-
+	@Deprecated
 	private List<Integer> crearLista() {
 		return List.of(0,1,2,3,4,5,6,7,13,21,34,55,89,144);
 	}
-	
+	@Deprecated
 	private List<Integer> filtrarPares(List<Integer> numeros) {
 		List<Integer> resultado = new ArrayList<>();
 		// rrecorrer lista
@@ -56,7 +58,7 @@ public class Main {
 		return resultado;
 	}
 	
-
+	@Deprecated
 	private List<Integer> elevarAlCuadrado(List<Integer> pares) {
 		List<Integer> resultado = new ArrayList<>();
 		for (Integer numero : pares) {
