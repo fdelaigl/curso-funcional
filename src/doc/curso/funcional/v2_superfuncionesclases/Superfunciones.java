@@ -5,6 +5,7 @@ import java.util.List;
 
 import doc.curso.funcional.v2_superfuncionesclases.interfaces.Consumidor;
 import doc.curso.funcional.v2_superfuncionesclases.interfaces.Funcion;
+import doc.curso.funcional.v2_superfuncionesclases.interfaces.FuncionBinaria;
 import doc.curso.funcional.v2_superfuncionesclases.interfaces.Predicado;
 import doc.curso.funcional.v2_superfuncionesclases.interfaces.Proveedor;
 
@@ -34,12 +35,21 @@ public class Superfunciones {
 		}
 		return resultado;
 	}
-	
-	public static List<Integer> actuar(List<Integer> valores, Consumidor consumidor) {	
+
+	public static List<Integer> actuar(List<Integer> valores, Consumidor consumidor) {
 		for (Integer valor : valores) {
 			consumidor.aceptar(valor);
 		}
 		return valores;
+	}
+
+	public static Integer reducir(List<Integer> valores, Integer identidad, FuncionBinaria funcionBinaria) {
+		Integer total = identidad;
+
+		for (Integer numero : valores) {
+			total = funcionBinaria.aplicar(total, numero);
+		}
+		return total;
 	}
 
 }
