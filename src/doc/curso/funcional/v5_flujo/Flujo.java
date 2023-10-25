@@ -18,7 +18,7 @@ public class Flujo<T> {
 		this.valores = valores;
 	}
 
-	public Flujo<T> filtrar(Predicado<T> predicado) {
+	public  Flujo<T> filtrar(Predicado<T> predicado) {
 		List<T> resultado = new ArrayList<>();
 		for (T valor : valores) {
 			if (predicado.test(valor)) {
@@ -59,12 +59,5 @@ public class Flujo<T> {
 		}
 		return total;
 	}
-
-	@Override
-	public String toString() {
-		return valores.toString();
-	}
-
-	
 
 }
